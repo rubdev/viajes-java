@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e786b413-6a4b-4ffd-9200-1f514e490849">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM Paquete]]>
+	</queryString>
+	<field name="paqueteID" class="java.lang.Object"/>
+	<field name="nombre" class="java.lang.Object"/>
+	<field name="precio" class="java.lang.Object"/>
+	<field name="hospedaje" class="java.lang.Object"/>
+	<field name="duracion" class="java.lang.Object"/>
+	<field name="destino" class="java.lang.Object"/>
+	<field name="transporte" class="java.lang.Object"/>
+	<group name="paqueteID">
+		<groupExpression><![CDATA[$F{paqueteID}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="56" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="204b897a-1c2d-4846-948b-945fcedd689b"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="0" y="0" width="56" height="24" forecolor="#FFFFFF" uuid="393061d2-b2f5-4298-8303-35b5cbcf28c2"/>
+						<textElement>
+							<font fontName="SansSerif" size="14" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[""+$F{paqueteID}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="56" y="0" width="185" height="27" uuid="ae3fd28e-734c-42b2-b485-333026375b63"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="241" y="3" width="80" height="24" uuid="1580f99f-e879-4ca5-8ad7-ef3fbfc4bfb4"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{precio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="323" y="3" width="97" height="24" uuid="34879fcd-5f2a-46b6-a423-c4c1034ac935"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{hospedaje}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="421" y="3" width="107" height="24" uuid="fab466a7-f064-4f1a-94ff-b4e2384a7c48"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{duracion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="528" y="3" width="132" height="24" uuid="251a9480-cac6-40d9-b290-89435b33099c"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{destino}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="660" y="0" width="132" height="27" uuid="a6002676-fab3-4cfb-9b19-1d6ef17c944d"/>
+					<textElement>
+						<font fontName="Serif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{transporte}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="147">
+				<pie3DChart>
+					<chart>
+						<reportElement x="241" y="12" width="287" height="135" uuid="600f7d62-07a0-4215-bc6b-f260a95f6300"/>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<pieDataset>
+						<keyExpression><![CDATA[$F{nombre}]]></keyExpression>
+						<valueExpression><![CDATA[$F{precio}]]></valueExpression>
+						<labelExpression><![CDATA[$F{precio}.toString()]]></labelExpression>
+					</pieDataset>
+					<pie3DPlot>
+						<plot/>
+						<itemLabel/>
+					</pie3DPlot>
+				</pie3DChart>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="697" height="66" backcolor="#000000" uuid="8b404f1a-c5c1-4363-913e-92be70c654c1"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="351" height="66" uuid="c1eb4c95-78e8-43ae-903f-f11b37657403"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Serif" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Gestión Viajes APP]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="351" y="0" width="316" height="66" uuid="ca3cb096-82c5-498a-b0f4-f3f43a441112"/>
+					<textElement textAlignment="Right">
+						<font fontName="Serif" size="24" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Informe de paquetes y comparativa de sus precios]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="697" height="32" forecolor="#000000" backcolor="#FFFFFF" uuid="94384699-8d53-416c-9c03-10ef84c54685"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="966922f5-5693-4dda-810c-340195e08a69"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="56" y="0" width="185" height="18" forecolor="#000000" uuid="149a4fba-ae44-49a1-a9df-acc38bc0bdeb"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del paquete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="241" y="0" width="80" height="18" forecolor="#000000" uuid="626a6a91-409a-4ea0-99e0-b4094db6afbb"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="323" y="0" width="97" height="18" forecolor="#000000" uuid="8f6a508c-05fa-403d-9411-376e1c200058"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Hospedaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="420" y="0" width="108" height="18" forecolor="#000000" uuid="80f4c71d-de2b-4d6c-be84-72d1e67c4cb7"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Duracion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="0" width="132" height="18" forecolor="#000000" uuid="150b176e-4f79-401d-adf8-4b53d4dd0bc3"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="660" y="0" width="132" height="18" forecolor="#000000" uuid="cd9f64a5-36ed-4ec8-9e06-cc9f0e2d8785"/>
+				<textElement>
+					<font fontName="Serif" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Transporte]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="61b14a44-9f05-4f73-9aa7-9f7e6c4f93bc"/>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="20b2f3de-a898-4049-b652-124f9b597fa1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="15ab6bf8-bd77-40e2-9aa8-2b06b0ec4298"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="9540f803-03f9-476b-99fd-4369b536895c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e4681a13-b6a4-4477-8cab-7949aca5ede0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="44438893-4923-40c6-a579-97100f63322e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
